@@ -1,0 +1,25 @@
+public class SubarraySumEqualsK {
+
+    public static int subarraySum(int[] nums, int K) {
+        HashMap<Integer, Integer> sumCount = new HashMap<>();
+        sumCount.put(0, 1); 
+        int sum = 0;
+        int count = 0;
+
+        for (int num : nums) {
+            sum += num; 
+
+            if (sumCount.containsKey(sum - K)) {
+            }
+
+            sumCount.put(sum, sumCount.getOrDefault(sum, 0) + 1);
+        }
+
+        return count;
+    }
+}
+
+🔹Time and Space Complexity:
+
+Time Complexity: O(n) because we are iterating through the array only once and performing constant-time operations (hash map lookups and updates).
+Space Complexity: O(n) because the hash map stores up to n cumulative sums (in the worst case).
