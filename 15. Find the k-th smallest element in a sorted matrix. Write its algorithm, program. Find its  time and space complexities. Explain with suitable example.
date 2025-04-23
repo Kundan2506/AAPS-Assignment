@@ -1,0 +1,65 @@
+🔹1. Algorithm (Binary Search on Value)
+1.Set low = smallest element in matrix → matrix[0][0]
+2.Set high = largest element → matrix[n-1][n-1]
+3.Do binary search:
+    Mid = (low + high) / 2
+    Count how many elements in matrix ≤ mid
+    If count < k, move low = mid + 1
+    Else, move high = mid
+4.When low == high, it's the answer.
+
+🔹2. Java Code
+public static int kthSmallest(int[][] matrix, int k) {
+        int n = matrix.length;
+        int low = matrix[0][0];
+        int high = matrix[n - 1][n - 1];
+
+        while (low < high) {
+            int mid = (low + high) / 2;
+            int count = countLessEqual(matrix, mid, n);
+
+            if (count < k) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low;
+    }
+
+    private static int countLessEqual(int[][] matrix, int mid, int n) {
+        int count = 0;
+        int row = n - 1;
+        int col = 0;
+
+        while (row >= 0 && col < n) {
+            if (matrix[row][col] <= mid) {
+                count += (row + 1);
+                col++;
+            } else {
+                row--;
+            }
+        }
+        return count;
+    }
+
+🔹3. Time and Space Complexities
+
+Task	            Complexity
+Time Complexity	  O(n log(max - min))
+Space Complexity	O(1)
+
+🔹4. Example
+Input:
+matrix = {
+    {1, 5, 9},
+    {10, 11, 13},
+    {12, 13, 15}
+}
+k = 8
+
+Explanation:
+Sorted list: [1, 5, 9, 10, 11, 12, 13, 13, 15]
+8-th smallest element = 13
+
+
