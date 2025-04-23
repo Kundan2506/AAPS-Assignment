@@ -1,0 +1,26 @@
+🔹Concept of Linked Lists
+
+A linked list is a linear data structure where elements (also called nodes) are stored in a sequence, but unlike arrays, elements are not stored in contiguous memory locations. Instead, each node contains two parts:
+    Data: The actual data or value stored in the node.
+    Pointer (or reference): A reference or pointer to the next node in the sequence.
+
+In other words, each node in a linked list points to the next node, creating a chain of nodes. The first node is called the head of the list, and the last node points to null (indicating the end of the list).
+
+🔹Types of Linked Lists:
+
+Singly Linked List: Each node contains data and a reference to the next node.
+Each node points to the next node in the sequence.
+The last node points to null.
+
+Doubly Linked List: Each node contains data, a reference to the next node, and a reference to the previous node.
+This allows traversal in both directions (forward and backward).
+
+Circular Linked List: In this type of list, the last node points back to the head node, forming a circle. It can be singly circular or doubly circular.
+
+🔹Basic Operations on Linked Lists
+1.Traversal: Visit each node in the linked list to read or print its data.
+2.Insertion: Add a node to the list (at the beginning, at the end, or at a specific position).
+3.Deletion: Remove a node from the list (from the beginning, from the end, or from a specific position).
+4.Searching: Find a node with a given value.
+5.Updating: Modify the data in a node.
+
