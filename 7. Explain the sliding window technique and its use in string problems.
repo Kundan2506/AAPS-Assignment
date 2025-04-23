@@ -1,0 +1,30 @@
+The Sliding Window Technique is a method for optimizing problems that involve checking subsets (windows) of a sequential data structure like an array or string.
+Instead of repeatedly iterating over all possible subarrays or substrings (which is inefficient), you "slide" a window over the data, adding new elements and removing old ones, maintaining the desired condition or value efficiently.
+
+🔹How it works
+
+1.Initialize two pointers — typically left and right.
+2.Expand the window by moving right.
+3.Shrink the window by moving left if constraints are violated.
+4.Track the result (e.g., max/min/length/count) during the process.
+
+🔹Common Use Cases in String Problems
+1. Longest Substring Without Repeating Characters
+        Keep a window with unique characters using a HashSet.
+        Slide window to maintain uniqueness.
+✅ Time: O(n)
+
+2. Minimum Window Substring
+        Find the smallest window in s that contains all characters of t.
+        Use two hash maps and expand/shrink window as needed.
+✅ Time: O(n + m)
+
+3. Anagram Detection (Permutation in String)
+         Use a sliding window of size equal to pattern.
+         Check if frequency maps match using HashMap or int[26].
+
+4. Fixed-size Sliding Window Problems
+         Max/Min sum of size k, max average subarray, etc.
+         Maintain a rolling sum/window.
+✅ Time: O(n)
+
