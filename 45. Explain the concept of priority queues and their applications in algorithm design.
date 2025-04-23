@@ -1,0 +1,33 @@
+🔹Concept of Priority Queues
+
+A priority queue is an abstract data type similar to a regular queue, but with an added feature: each element has a priority. Elements are dequeued in order of their priority, not just by the order in which they were added.
+  Higher priority elements are dequeued before lower priority ones.
+  If two elements have the same priority, they are processed in their order of arrival (like a normal queue).
+
+🔹How Priority Queue Works
+
+Under the hood, a heap (usually a binary heap) is used to implement a priority queue efficiently:
+  Min-Heap: Element with the smallest value has the highest priority.
+  Max-Heap: Element with the largest value has the highest priority.
+
+In Java, the PriorityQueue class by default is a min-heap.
+
+🔹Applications in Algorithm Design
+
+1.Dijkstra’s Algorithm (Shortest Path)
+  Uses a min-priority queue to always expand the node with the smallest tentative distance.
+
+2.Prim’s Algorithm (Minimum Spanning Tree)
+  Selects the edge with the smallest weight that connects a vertex to the tree.
+
+3.Huffman Coding (Data Compression)
+  Constructs a tree using the two lowest frequency nodes at each step using a min-heap.
+
+4.A Search Algorithm (Pathfinding)*
+  Priority is based on f(n) = g(n) + h(n), where g(n) is the cost and h(n) is the heuristic.
+
+5.Job Scheduling
+  Tasks with higher priority (e.g., deadlines) are executed first.
+
+6.Top-K Problems
+  Find the top K largest/smallest elements using a heap of size K.
