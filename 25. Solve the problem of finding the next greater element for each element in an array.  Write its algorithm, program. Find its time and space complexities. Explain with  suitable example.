@@ -1,0 +1,70 @@
+🔹1.Algorithm
+Steps:
+1.Initialize an empty stack.
+2.Traverse the array from right to left.
+3.For each element:
+    Pop elements from the stack while they are smaller than or equal to the current element.
+    If the stack is not empty, the next greater element is the top of the stack.
+    Push the current element onto the stack.
+4.If the stack is empty, there is no next greater element, so assign -1.
+
+🔹2.Java Program
+public class NextGreaterElement {
+
+    public static int[] nextGreaterElement(int[] arr) {
+        int n = arr.length;
+        int[] result = new int[n];
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = n - 1; i >= 0; i--) 
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+            if (!stack.isEmpty()) {
+                result[i] = stack.peek();
+            } else {
+                result[i] = -1;  
+            }
+
+            stack.push(arr[i]);
+        }
+
+        return result;
+    }
+}
+
+🔹3.Time and Space Complexity
+
+Task	              Complexity
+Time Complexity	    O(n)
+Space Complexity	  O(n)
+
+🔹4.Example Explanation
+Input:
+arr = [4, 5, 2, 10, 8]
+
+Step-by-step traversal:
+i = 4 (arr[4] = 8):
+  The stack is empty. So, result[4] = -1.
+  Push 8 onto the stack.
+
+i = 3 (arr[3] = 10):
+  Pop 8 (because 8 <= 10).
+  The stack is empty. So, result[3] = -1.
+  Push 10 onto the stack.
+  
+i = 2 (arr[2] = 2):
+  The top of the stack is 10, which is greater than 2. So, result[2] = 10.
+  Push 2 onto the stack.
+
+i = 1 (arr[1] = 5):
+  The top of the stack is 2, which is less than 5. Pop 2.
+  The top of the stack is 10, which is greater than 5. So, result[1] = 10.
+  Push 5 onto the stack.
+
+i = 0 (arr[0] = 4):
+  The top of the stack is 5, which is greater than 4. So, result[0] = 5.
+  Push 4 onto the stack.
+
+Final result:
+The array result is [5, 10, 10, -1, -1].
