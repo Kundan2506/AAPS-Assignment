@@ -1,0 +1,23 @@
+public class GenerateSubsets {
+
+    public static List<List<Integer>> generateSubsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(nums, 0, new ArrayList<>(), result);
+        return result;
+    }
+
+    private static void backtrack(int[] nums, int index, List<Integer> current, List<List<Integer>> result) {
+        result.add(new ArrayList<>(current));
+
+        for (int i = index; i < nums.length; i++) {
+            current.add(nums[i]);
+            backtrack(nums, i + 1, current, result);
+            current.remove(current.size() - 1);
+        }
+    }
+}
+
+🔹Time and Space Complexity:
+
+Time Complexity: O(2^n) because we generate all possible subsets, and for each element, we make a decision (whether to include it or not).
+Space Complexity: O(n) due to the recursive call stack and the space used for storing the subsets (each subset can have a maximum of n elements, and there are 2^n subsets).
