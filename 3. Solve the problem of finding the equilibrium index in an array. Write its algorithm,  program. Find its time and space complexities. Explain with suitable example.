@@ -1,0 +1,49 @@
+Equilibrium Index of an array is an index such that the sum of elements before it is equal to the sum of elements after it.
+
+🔹1. Algorithm
+Compute the total sum of the array.
+Initialize leftSum = 0.
+
+Traverse the array:For every index i, subtract arr[i] from total to get rightSum.
+
+If leftSum == rightSum, return index i as the equilibrium index.
+Add arr[i] to leftSum for next iteration.
+
+If no such index found, return -1.
+
+🔹2. Java Program
+public static int findEquilibriumIndex(int[] arr) {
+        int totalSum = 0;
+        for (int num : arr) {
+            totalSum += num;
+        }
+        int leftSum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            totalSum -= arr[i]; 
+
+            if (leftSum == totalSum) {
+                return i;
+            }
+            leftSum += arr[i];  
+        }
+        return -1; 
+    }
+🔹3. Time and Space Complexity
+
+Task	              Complexity
+Time Complexity	    O(n)
+Space Complexity	  O(1)
+
+🔹4. Example
+Input:arr = {-7, 1, 5, 2, -4, 3, 0}
+
+Step-by-Step:Total Sum = 0
+
+Index 0 → leftSum = 0, rightSum = 7 ≠ 0
+Index 1 → leftSum = -7, rightSum = 6 ≠ -7
+Index 2 → leftSum = -6, rightSum = 1 ≠ -6
+Index 3 → leftSum = -1, rightSum = -1 ✅ MATCH
+
+Output:
+Equilibrium index is: 3
