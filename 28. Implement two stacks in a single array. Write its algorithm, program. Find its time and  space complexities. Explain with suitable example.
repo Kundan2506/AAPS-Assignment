@@ -1,0 +1,78 @@
+class TwoStacks {
+    int[] arr;
+    int top1, top2;
+    int size;
+
+    public TwoStacks(int n) {
+        arr = new int[n];
+        size = n;
+        top1 = -1;         
+        top2 = size;        
+    }
+
+    public void push1(int x) {
+        if (top1 + 1 == top2) {
+            System.out.println("Overflow! Stack 1 is full.");
+            return;
+        }
+        arr[++top1] = x;
+    }
+
+    public void push2(int x) {
+        if (top2 - 1 == top1) {
+            System.out.println("Overflow! Stack 2 is full.");
+            return;
+        }
+        arr[--top2] = x;
+    }
+
+    public int pop1() {
+        if (top1 == -1) {
+            System.out.println("Underflow! Stack 1 is empty.");
+            return -1;
+        }
+        return arr[top1--];
+    }
+
+    public int pop2() {
+        if (top2 == size) {
+            System.out.println("Underflow! Stack 2 is empty.");
+            return -1; 
+        }
+        return arr[top2++];
+    }
+
+    public int peek1() {
+        if (top1 == -1) {
+            System.out.println("Stack 1 is empty.");
+            return -1;
+        }
+        return arr[top1];
+    }
+
+    public int peek2() {
+        if (top2 == size) {
+            System.out.println("Stack 2 is empty.");
+            return -1;
+        }
+        return arr[top2];
+    }
+
+    public boolean isEmpty1() {
+        return top1 == -1;
+    }
+
+    public boolean isEmpty2() {
+        return top2 == size;
+    }
+
+    public boolean isFull() {
+        return top1 + 1 == top2;
+    }
+}
+
+ 🔹Time and Space Complexity
+
+Task	              Complexity
+Time Complexity	    O(1)
+Space Complexity	  O(n)
