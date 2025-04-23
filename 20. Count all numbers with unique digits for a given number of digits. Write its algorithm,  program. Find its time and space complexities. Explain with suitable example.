@@ -1,0 +1,58 @@
+🔹1. Algorithm
+Let’s break it down:
+  For n = 0, only 1 number: 0
+  For n = 1: 10 numbers → 0 to 9
+For n ≥ 2:
+
+Use the formula:
+Total=10+∑𝑖=2𝑛9×𝑃(9,𝑖−1)
+
+Where:
+ The first digit can be 1-9 → 9 choices
+ The next i-1 digits can be chosen from the remaining 9 digits
+ P(9, i-1) means permutations of i-1 digits from 9 (since 0 is allowed after the first digit)
+
+🔹2. Java Program
+public class UniqueDigitCounter {
+
+    public static int countNumbersWithUniqueDigits(int n) {
+        if (n == 0) return 1;
+        if (n > 10) n = 10; 
+
+        int total = 10, product = 9;
+
+        for (int i = 2; i <= n; i++) {
+            product *= (11 - i); 
+            total += product;
+        }
+
+        return total;
+    }
+}
+
+🔹3. Time and Space Complexity
+
+Task	            Complexity
+Time Complexity	  O(n)
+Space Complexity	O(1)
+
+🔹4. Example
+Input:
+n = 2
+Explanation:
+We’re counting numbers from 0 to 99:
+Total: 100 numbers
+
+Remove duplicates like 11, 22, 33, etc.
+
+Using the logic:
+For 1-digit: 10 (0 to 9)
+For 2-digit:
+
+First digit: 1–9 → 9 options
+Second digit: 0–9 excluding the first → 9 options
+
+Total = 9 × 9 = 81
+
+Final total = 10 (1-digit) + 81 (2-digit) = 91
+
