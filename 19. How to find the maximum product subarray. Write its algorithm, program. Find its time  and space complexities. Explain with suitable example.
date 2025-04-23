@@ -1,0 +1,58 @@
+🔹1. Algorithm (Dynamic Programming with Two Variables)
+Steps:
+1.Initialize maxProd = nums[0], minProd = nums[0], and result = nums[0].
+2.For each number from index 1 onward:
+    If the number is negative, swap maxProd and minProd.
+    Update:
+        maxProd = max(num, maxProd * num)
+        minProd = min(num, minProd * num)
+    Update result = max(result, maxProd)
+
+🔹2.Java Program
+public class MaxProductSubarray {
+
+    public static int maxProduct(int[] nums) {
+        if (nums.length == 0) return 0;
+
+        int maxProd = nums[0], minProd = nums[0], result = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            int current = nums[i];
+
+            if (current < 0) {
+                int temp = maxProd;
+                maxProd = minProd;
+                minProd = temp;
+            }
+
+            maxProd = Math.max(current, maxProd * current);
+            minProd = Math.min(current, minProd * current);
+
+            result = Math.max(result, maxProd);
+        }
+
+        return result;
+    }
+}
+
+🔹3. Time and Space Complexity
+
+Task	             Complexity
+Time Complexity	   O(n)
+Space Complexity	 O(1)
+
+5. Example
+Input:
+nums = [2, 3, -2, 4]
+
+Computation:
+At index 0: max = 2, min = 2, res = 2
+At index 1: max = 6, min = 3, res = 6
+At index 2: num = -2 → swap max & min
+max = max(-2, 3 * -2) = max(-2, -6) = -2
+min = min(-2, 6 * -2) = min(-2, -12) = -12
+At index 3: num = 4
+max = max(4, -2 * 4) = 4
+min = min(4, -12 * 4) = -48
+
+*Final result = 6
