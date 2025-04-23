@@ -1,0 +1,57 @@
+🔹1. Algorithm (Two-Pointer Approach)
+
+Approach: 
+1.Initialize two pointers:
+      One pointer at the start of the array (left).
+      One pointer at the end of the array (right).
+2.Check the sum of the elements at the left and right pointers:
+      If the sum equals the target, return the pair.
+      If the sum is less than the target, move the left pointer one step to the right (left++).
+      If the sum is greater than the target, move the right pointer one step to the left (right--).
+3.Repeat the process until the left pointer is no longer less than the right pointer.
+
+🔹2. Java Program
+public static int[] twoSum(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum == target) {
+                return new int[] { nums[left], nums[right] };  
+            } else if (sum < target) {
+                left++; 
+            } else {
+                right--;
+            }
+        }
+        return new int[] {};  
+    }
+
+🔹3. Time and Space Complexity
+
+Task	              Complexity
+Time Complexity	    O(n)
+Space Complexity	  O(1)
+
+🔹4. Example Walkthrough
+Input: nums = {2, 7, 11, 15}
+target = 9
+
+*Steps: 
+Initial Pointers: left = 0, right = 3
+    nums[left] = 2, nums[right] = 15
+    Sum = 2 + 15 = 17 (greater than 9)
+    Move right pointer left (right = 2).
+
+Next Pointers: left = 0, right = 2
+    nums[left] = 2, nums[right] = 11
+    Sum = 2 + 11 = 13 (greater than 9)
+    Move right pointer left (right = 1).
+
+Next Pointers: left = 0, right = 1
+    nums[left] = 2, nums[right] = 7
+    Sum = 2 + 7 = 9 (equal to target)
+    Return the pair (2, 7).
+
+*Output:
+Pair found: 2, 7
