@@ -1,0 +1,72 @@
+🔹1. Algorithm
+Approach: Iterative Merge (using a dummy node)
+1.Initialize a dummy node and a tail pointer pointing to it.
+2.Iterate while both list1 and list2 are not null:
+     Compare the values of the current nodes.
+     Append the node with the smaller value to the merged list.
+     Move the pointer (list1 or list2) ahead.
+3..After the loop, if either list1 or list2 is not null, append the remaining part to the merged list.
+4.Return dummy.next as the head of the new merged list.
+
+🔹2. Java Code
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class MergeSortedLinkedLists {
+
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                tail.next = list1;
+                list1 = list1.next;
+            } else {
+                tail.next = list2;
+                list2 = list2.next;
+            }
+            tail = tail.next;
+        }
+
+        if (list1 != null) tail.next = list1;
+        if (list2 != null) tail.next = list2;
+
+        return dummy.next;
+    }
+
+    public static void printList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+        System.out.println();
+    }
+
+🔹3. Time and Space Complexities
+
+Task	                        Complexity
+Time Complexity	              O(n + m)
+Space Complexity (Iterative)	O(1)
+
+🔹4. Example Walkthrough
+Input:
+list1 = 1 -> 3 -> 5  
+list2 = 2 -> 4 -> 6
+
+Steps:
+1.Compare 1 and 2 → pick 1 → merged: 1
+2.Compare 3 and 2 → pick 2 → merged: 1 -> 2
+3.Compare 3 and 4 → pick 3 → merged: 1 -> 2 -> 3
+4.Compare 5 and 4 → pick 4 → merged: 1 -> 2 -> 3 -> 4
+5.Compare 5 and 6 → pick 5 → merged: 1 -> 2 -> 3 -> 4 -> 5
+6.Only 6 is left → append → 1 -> 2 -> 3 -> 4 -> 5 -> 6
+
+Output:
+Merged List: 1 2 3 4 5 6`
