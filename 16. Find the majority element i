@@ -1,0 +1,49 @@
+🔹1. Algorithm: Boyer-Moore Voting Algorithm
+Steps:
+1.Initialize count = 0, candidate = null.
+2.Traverse the array:
+    If count == 0, set candidate = current element.
+    If current element == candidate, increment count.
+    Else, decrement count.
+3.At the end, candidate will be the majority element.
+
+🔹2.Java Program
+public static int majorityElement(int[] nums) {
+        int count = 0, candidate = 0;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+
+        return candidate;
+    }
+
+🔹3. Time and Space Complexity
+
+Task	            Complexity
+Time Complexity	  O(n)
+Space Complexity	O(1)
+
+🔹4. Example
+Input:
+nums = [2, 2, 1, 1, 1, 2, 2]
+
+Execution:
+Start with count = 0
+2: count = 1 (candidate = 2)
+2: count = 2
+1: count = 1
+1: count = 0
+1: count = 1 (candidate = 1)
+2: count = 0
+2: count = 1 (candidate = 2) → final answer
+
+*Majority element = 2
