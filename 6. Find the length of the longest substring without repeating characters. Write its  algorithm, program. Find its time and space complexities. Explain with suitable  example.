@@ -1,0 +1,58 @@
+🔹1. Algorithm (Sliding Window)
+Idea:
+Use a sliding window with a HashSet to track characters in the current window.
+Expand the window by moving the right pointer; if a duplicate is found, shrink the window from the left until it's valid again.
+
+*Steps:
+
+1.Initialize a Set<Character> to store characters in the current window.
+2.Use two pointers: left and right starting at 0.
+3.Loop through the string with right:
+      If s[right] is not in the set:
+          Add to set.
+          Update maxLength as max(maxLength, right - left + 1)
+      If it is in the set:
+          Remove s[left] and increment left until the duplicate is removed.
+4.Return maxLength.
+
+🔹2. Java Program
+public static int lengthOfLongestSubstring(String s) {
+        Set<Character> seen = new HashSet<>();
+        int left = 0, maxLength = 0;
+
+        for (int right = 0; right < s.length(); right++) {
+            while (seen.contains(s.charAt(right))) {
+                seen.remove(s.charAt(left));
+                left++;
+            }
+            seen.add(s.charAt(right));
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
+    }
+
+🔹3. Time and Space Complexity
+
+Task	               Complexity
+Time Complexity	     O(n)
+Space Complexity	   O(min(n, k))
+
+🔹4. Example Walkthrough
+Input:
+s = "pwwkew"
+
+Steps:
+p → "p" → ✅
+pw → "pw" → ✅
+pww → duplicate w → slide left
+wk → "wk" → ✅
+wke → "wke" → ✅
+kew → "kew" → ✅
+
+Max Length: 3
+
+Output:
+Length of longest substring: 3
+Length of longest substring: 1
+Length of longest substring: 3
