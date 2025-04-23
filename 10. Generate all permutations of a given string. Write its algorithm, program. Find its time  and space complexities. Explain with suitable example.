@@ -1,0 +1,66 @@
+🔹1. Algorithm (Backtracking)
+*Approach:
+1.Backtracking involves exploring all possible choices and "backtracking" when you hit an invalid state.
+2.We swap characters in the string and recursively generate permutations for the rest of the string.
+3.Once all characters have been used, a permutation is complete and is added to the result list.
+4.Undo the swap (backtrack) and continue exploring the remaining options.
+
+*Steps:
+1.Start with the first character of the string.
+2Swap it with every other character (including itself), recursively generate permutations for the remaining substring.
+3.Backtrack by swapping the characters back to their original positions.
+4.Continue this process for all characters in the string.
+5.Store the permutations once the end of the string is reached.
+
+🔹2. Java Program
+public class GeneratePermutations {
+    public static void permute(String s, int l, int r, List<String> result) {
+        if (l == r) {
+            result.add(s);
+        } else {
+            for (int i = l; i <= r; i++) {
+                s = swap(s, l, i);
+
+                permute(s, l + 1, r, result);
+
+                s = swap(s, l, i);
+            }
+        }
+    }
+private static String swap(String s, int i, int j) {
+        char[] charArray = s.toCharArray();
+        char temp = charArray[i];
+        charArray[i] = charArray[j];
+        charArray[j] = temp;
+        return new String(charArray);
+    }
+
+🔹3. Time and Space Complexity
+
+Task	               Complexity
+Time Complexity	     O(n!)
+Space Complexity	   O(n!)
+
+🔹4. Example Walkthrough
+Input: s = "ABC"
+Steps:Starting with "ABC":
+
+Swap "A" with itself: "ABC", recurse for "BC".
+Swap "B" with "B": "ABC", recurse for "C", results in ["ABC"].
+Swap "B" with "C": "ACB", recurse for "B", results in ["ABC", "ACB"].
+Swap "A" with "B": "BAC", recurse for "AC".
+Swap "A" with "A": "BAC", recurse for "C", results in ["ABC", "ACB", "BAC"].
+Swap "A" with "C": "BCA", recurse for "A", results in ["ABC", "ACB", "BAC", "BCA"].
+Swap "A" with "C": "CBA", recurse for "BA".
+Swap "B" with "B": "CBA", recurse for "A", results in ["ABC", "ACB", "BAC", "BCA", "CBA"].
+Swap "B" with "A": "CAB", recurse for "B", results in ["ABC", "ACB", "BAC", "BCA", "CBA", "CAB"].
+
+Output:
+All permutations of the string:
+ABC
+ACB
+BAC
+BCA
+CBA
+CAB
+
