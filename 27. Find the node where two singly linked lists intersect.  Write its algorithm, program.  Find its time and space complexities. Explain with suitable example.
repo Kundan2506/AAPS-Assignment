@@ -1,0 +1,66 @@
+public class IntersectionOfLinkedLists {
+
+    public static int getLength(ListNode head) {
+        int length = 0;
+        ListNode current = head;
+        while (current != null) {
+            length++;
+            current = current.next;
+        }
+        return length;
+    }
+
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+  
+        int lenA = getLength(headA);
+        int lenB = getLength(headB);
+
+        ListNode pointerA = headA;
+        ListNode pointerB = headB;
+
+        if (lenA > lenB) {
+            for (int i = 0; i < lenA - lenB; i++) {
+                pointerA = pointerA.next;
+            }
+        } else {
+            for (int i = 0; i < lenB - lenA; i++) {
+                pointerB = pointerB.next;
+            }
+        }
+
+        while (pointerA != null && pointerB != null) {
+            if (pointerA == pointerB) {
+                return pointerA; 
+            }
+            pointerA = pointerA.next;
+            pointerB = pointerB.next;
+        }
+
+        return null; 
+    }
+public static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public static ListNode createLinkedList(int[] values) {
+        ListNode head = new ListNode(values[0]);
+        ListNode current = head;
+        for (int i = 1; i < values.length; i++) {
+            current.next = new ListNode(values[i]);
+            current = current.next;
+        }
+        return head;
+    }
+
+}
+
+🔹Time and Space Complexity
+
+Task	                   Complexity
+Time Complexity	         O(n + m)
+Space Complexity	       O(1)
