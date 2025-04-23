@@ -1,0 +1,53 @@
+🔹1. Algorithm
+Steps:
+1.Initialize a count variable to store the total number of 1s.
+2.Loop through all numbers from 1 to n:
+    For each number, use Brian Kernighan's algorithm to count the number of 1s in its binary representation.
+3.Return the total count.
+
+🔹2. Java Program
+public class CountOnes {
+
+    public static int countBits(int n) {
+        int count = 0;
+        for (int i = 0; i <= n; i++) {
+            count += countOnesInBinary(i); 
+        }
+        
+        return count;
+    }
+
+    public static int countOnesInBinary(int num) {
+        int count = 0;
+      
+        while (num > 0) {
+            num &= (num - 1);  
+            count++;
+        }
+        
+        return count;
+    }
+}
+
+🔹3. Time and Space Complexity
+
+Task	             Complexity
+Time Complexity	   O(n * log n)
+Space Complexity	 O(1)
+
+🔹4. Example
+Input:
+n = 5
+Explanation:
+We need to count the total number of 1s in the binary representations of the numbers from 0 to 5:
+
+0 = 000 → 0 ones
+1 = 001 → 1 one
+2 = 010 → 1 one
+3 = 011 → 2 ones
+4 = 100 → 1 one
+5 = 101 → 2 ones
+
+Total = 0 + 1 + 1 + 2 + 1 + 2 = 7
+
+
