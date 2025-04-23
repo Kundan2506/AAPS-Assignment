@@ -1,0 +1,48 @@
+🔹1. Algorithm
+
+Approach: Vertical scanning (Character by character comparison)
+1.Start by comparing the characters of the strings one by one.
+2.For each character position i, check if the i-th character is the same in all strings.
+3.If at any position the characters do not match, stop and return the prefix found up to that point.
+4.If all characters match for all strings, return the entire string as the common prefix.
+
+🔹2. Java Program
+public static String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        String prefix = strs[0];
+
+        for (int i = 1; i < strs.length; i++) {
+            while (strs[i].indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) {
+                    return "";
+                }
+            }
+        }
+        return prefix;
+    }
+
+🔹3. Time and Space Complexity
+
+Task	               Complexity
+Time Complexity	     O(n * m)
+Space Complexity	   O(1)
+
+🔹4. Example Walkthrough
+Input:strs = {"flower", "flow", "flight"}
+
+Steps:Prefix starts with "flower".
+
+Compare "flower" with "flow": Match at "flow", so prefix becomes "flow".
+Compare "flow" with "flight": Match at "fl", so prefix becomes "fl".
+Resulting longest common prefix = "fl".
+
+Input:
+strs = {"dog", "racecar", "car"}
+No common prefix at all, so the result is an empty string: "".
+
+* Output:
+Longest common prefix (strs1): fl
+Longest common prefix (strs2): 
