@@ -1,0 +1,40 @@
+The Sliding Window Technique is a powerful and efficient algorithmic technique used to solve problems that require examining a contiguous subarray or substring of a given size within a larger array or string.
+The key idea is to maintain a "window" that can "slide" through the array or string to examine different subarrays or substrings. 
+This technique is most effective when the problem involves finding some property of the subarray (like the sum, maximum, or minimum) or needs to check a condition over a range of values.
+
+🔹How does it work:-
+1.Window Initialization: Start by defining a "window" of size K (or any relevant size). Initially, the window may start at the beginning of the array or string.
+2.Sliding the Window: Move the window one step at a time. This means removing an element from the left side of the window and adding a new element from the right side.
+3.Update the Result: At each step (when the window is moved), calculate the desired result for the current window (e.g., sum, maximum, etc.).
+4.Efficient Calculation: Instead of recalculating everything from scratch for each new window, try to update the result incrementally. For example, for a sum, you can subtract the element that is going out of the window and add the element that is coming into the window.
+
+🔹Applications of the Sliding Window Technique in Array Problems:
+1.Find the Maximum/Minimum Sum Subarray of Size K:
+Given an array of integers, find the maximum (or minimum) sum of a contiguous subarray of size K.
+Example Problem: Find the maximum sum of any subarray of size K in an array.
+  Approach: Slide a window of size K through the array and calculate the sum for each window. Only update the sum incrementally (subtract the element that is leaving the window and add the new element that is entering the window).
+
+2.Find the Longest Substring Without Repeating Characters:
+Given a string, find the length of the longest substring that contains no repeating characters.
+Example Problem: Find the length of the longest substring without repeating characters in a string.
+  Approach: Use two pointers (left and right) to represent the window, and adjust the window size dynamically to ensure that the substring remains without duplicates. Move the left pointer when a duplicate is found, and adjust the window to ensure it still meets the condition.
+
+3.Check if a Substring Contains All Characters of Another String:
+Given two strings S1 and S2, find if S2 is a substring of S1 that contains all the characters of S2.
+Example Problem: Find the smallest substring in S1 that contains all characters of S2.
+  Approach: Use a sliding window to check each possible substring of S1 that contains all characters of S2. The window will grow and shrink dynamically.
+
+4.Find the Longest Subarray with Sum Less than or Equal to K:
+Given an array of integers and a target sum K, find the longest subarray where the sum is less than or equal to K.
+Example Problem: Find the length of the longest subarray with a sum less than or equal to K.
+  Approach: Use a sliding window to maintain the sum of the current subarray. If the sum exceeds K, shrink the window by moving the left pointer to the right.
+
+5.Counting Elements in a Subarray:
+Count the occurrences of certain elements or conditions in a sliding window.
+Example Problem: Find the number of subarrays with at least K distinct elements.
+  Approach: Use a sliding window with two pointers and a hash map to track the frequency of elements in the current window. Adjust the window to maintain the desired condition.
+
+6.Find Subarrays with a Specific Condition:
+Given an array, find the subarrays that satisfy a certain condition (e.g., subarrays with a sum greater than a target, subarrays with a number of distinct elements, etc.).
+Example Problem: Find the number of subarrays with exactly K distinct integers.
+  Approach: Use two sliding windows to maintain the count of distinct integers in the current subarray. The first window gives the number of subarrays with at most K distinct integers, and the second window gives the number of subarrays with at most K-1 distinct integers.
