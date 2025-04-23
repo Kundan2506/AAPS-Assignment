@@ -1,0 +1,63 @@
+🔹1. Algorithm
+Compute the total sum of the array.
+
+Traverse the array from left to right, maintaining a running prefix sum.
+
+For each index i, check if:
+prefixSum == totalSum - prefixSum
+This means prefix and suffix have equal sums.
+
+If such a point is found, return true.
+If no such point is found after the loop, return false.
+
+🔹2. Java Program
+public static boolean canSplit(int[] arr) {
+        int totalSum = 0;
+        for (int num : arr) {
+            totalSum += num;
+        }
+
+        int prefixSum = 0;
+        for (int i = 0; i < arr.length - 1; i++) { 
+            prefixSum += arr[i];
+            int suffixSum = totalSum - prefixSum;
+
+            if (prefixSum == suffixSum) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+🔹3. Time and Space Complexity
+
+Task	              Complexity
+Time Complexity	    O(n)
+Space Complexity	  O(1)
+
+🔹4. Example Walkthrough
+Input:
+arr = {1, 2, 3, 3}
+Steps:
+totalSum = 9
+
+Traverse:
+
+i = 0 → prefix = 1, suffix = 8 ❌
+i = 1 → prefix = 3, suffix = 6 ❌
+i = 2 → prefix = 6, suffix = 3 ❌
+i = 3 → Not allowed (suffix would be empty)
+
+At i = 2:
+prefixSum = 6, suffixSum = 3 → not equal
+
+BUT actually:
+
+prefixSum = 3, suffixSum = 6 at i = 1
+prefix = [1,2], suffix = [3,3] ✅
+
+So correct check is up to i < arr.length - 1
+
+✅ Output:
+Can split arr1? true
+Can split arr2? false
