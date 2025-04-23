@@ -1,0 +1,35 @@
+🔹Equilibrium Index?
+An equilibrium index in an array is an index i such that:
+
+Sum of elements to the left of 𝑖=Sum of elements to the right of 𝑖
+
+Example:
+Input: A = [-7, 1, 5, 2, -4, 3, 0]
+Output: 3
+
+Explanation:
+Left sum = -7 + 1 + 5 = -1  
+Right sum = -4 + 3 + 0 = -1  
+So index 3 (value 2) is an equilibrium index.
+
+🔹How to Find It?
+Compute the total sum of the array.
+
+Traverse the array while maintaining the left sum.
+
+At each index i, check if leftSum == totalSum - leftSum - A[i].
+
+🔹Time & Space Complexity
+
+Operation	          Complexity
+Time	              O(n)
+Space	              O(1)
+
+🔹Applications of Equilibrium Index
+
+Area	                                     Use Case
+Load Balancing	                           Partitioning work/tasks equally
+Financial Analysis	                       Splitting datasets to analyze symmetrical behavior
+Prefix-Suffix Problems	                   Often used in prefix sum-based problems for balance detection
+Interview & Competitive Coding	           A popular variant for quick balance checks in arrays
+Game Theory & AI	                         Decision-making based on symmetrical payoff paths
