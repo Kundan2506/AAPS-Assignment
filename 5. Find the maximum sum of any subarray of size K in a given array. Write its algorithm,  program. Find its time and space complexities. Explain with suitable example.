@@ -15,7 +15,6 @@ Output: Maximum sum of any subarray of size K
 public static int maxSum(int[] arr, int k) {
         int n = arr.length;
         if (n < k) {
-            System.out.println("Window size K is larger than array size.");
             return -1;
         }
 
